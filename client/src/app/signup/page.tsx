@@ -11,6 +11,7 @@ const page = () => {
     username: "",
     password: "",
   });
+  const [show,setShow] = useState(false)
 
   const handleChange = (e: any) => {
     e.preventDefault();
@@ -42,23 +43,14 @@ const page = () => {
         <div className="flex flex-col w-[400px] ">
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type={show?'text':'password'}
             className="border-2 border-black rounded p-1 bg-[#d4a373] "
             name="password"
             id="password"
             onChange={handleChange}
           />
         </div>
-        <div className="flex flex-col w-[400px] ">
-          <label htmlFor="profile">Password</label>
-          <input
-            type="file"
-            className="border-2 border-black rounded p-1 bg-[#d4a373] "
-            name="file"
-            id="profile"
-            onChange={handleChange}
-          />
-        </div>
+        <button className=" border text-black bg-blue-400 rounded-md p-2 border-slate-900" onClick={() => setShow((prev) => (!prev))}>show</button>
         <p>
           Dont have an account?{" "}
           <span

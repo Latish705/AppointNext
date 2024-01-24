@@ -48,6 +48,7 @@ const page = () => {
             id="password"
             onChange={handleChange}
           />
+          <button></button>
         </div>
         <p>
           Dont have an account?{" "}
