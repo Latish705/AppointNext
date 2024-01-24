@@ -1,7 +1,61 @@
-import React from "react";
+"use client";
+
+import React, { use, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const page = () => {
-  return <div></div>;
+  const router = useRouter();
+  const [userData, setUserData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e: any) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setUserData((prev) => ({ ...prev, [name]: value }));
+    //console.log(userData.username, userData.password);
+  };
+  return (
+    <div className=" flex flex-row">
+      <div className="border-2 border-black w-1/2 h-screen"></div>
+      <div className="border-2 border-black w-1/2 h-screen flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col w-[400px]">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            className="border-2 border-black rounded p-1"
+            name="username"
+            id="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex flex-col w-[400px]">
+          <label htmlFor="password">Password</label>
+          <input
+            type="text"
+            className="border-2 border-black rounded p-1"
+            name="password"
+            id="password"
+            onChange={handleChange}
+          />
+        </div>
+        <p>
+          Dont have an account?{" "}
+          <span
+            onClick={() => router.push("/signup")}
+            className=" hover:cursor-pointer hover:text-blue-500 text-blue-400"
+          >
+            create one....
+          </span>
+        </p>
+
+        <button className="border-2 border-black rounded-xl p-2 px-4 m-1 active:translate-y-1">
+          Login
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default page;
