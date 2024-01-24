@@ -40,7 +40,7 @@ const page = () => {
   };
   return (
     <div className=" flex flex-row bg-[#ccd5ae] ">
-      <div className="border-2 border-black w-1/2 h-screen lg:block 2xl:block sm:flex flex-col md:block items-center justify-center hidden lg:flex md:flex">
+      <div className="border-2 border-black w-1/2 h-screen lg:block 2xl:block sm:flex flex justify-center 2xl:flex items-center md:block items-center justify-center hidden lg:flex md:flex">
         <Image
           src="./login.svg"
           width={500} // Set the width of the image
