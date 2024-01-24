@@ -1,16 +1,36 @@
 "use client";
-
-import React, { use, useState } from "react";
+import { GoogleLogin } from "@matheusluizn/react-google-login";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import Image from "next/image";
+import { gapi } from "gapi-script";
 const page = () => {
+  useEffect(() => {
+    const start = () => {
+      gapi.client.init({
+        clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+        scope: "email",
+      });
+    };
+    gapi.load("client:auth2", start);
+  }, []);
   const router = useRouter();
   const [userData, setUserData] = useState({
     username: "",
     password: "",
   });
+  const successLogin = (response: any) => {
+    console.log(response);
+  };
+
+  const failedLogin = (response: any) => {
+    console.log(response);
+  };
+  const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+
+  const handleGoogleLogin = (response: any) => {};
 
   const handleChange = (e: any) => {
     e.preventDefault();
@@ -67,6 +87,13 @@ const page = () => {
           <div className=" flex flex-row border-2 border-black rounded-xl p-2  px-2 m-1 active:translate-y-1 items-center justify-between gap-1 w-[150px] bg-[#fefae0]">
             <FaGoogle className="text-2xl static" />
             <button className="">Google</button>
+            <GoogleLogin
+              clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
+              buttonText="Login"
+              onSuccess={successLogin}
+              onFailure={failedLogin}
+            />
+            ;
           </div>
           <div className=" flex flex-row border-2 border-black rounded-xl p-2  px-2 m-1 active:translate-y-1 items-center justify-between gap-1 w-[150px] bg-[#fefae0]">
             <FaFacebook className="text-2xl" />

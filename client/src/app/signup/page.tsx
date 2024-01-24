@@ -39,6 +39,16 @@ const page = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="flex flex-col w-[400px]">
+          <label htmlFor="">Username</label>
+          <input
+            type="text"
+            className="border-2 border-black rounded p-1  bg-[#d4a373] "
+            name="username"
+            id=""
+            onChange={handleChange}
+          />
+        </div>
         <div className="flex flex-col w-[400px] ">
           <label htmlFor="password">Password</label>
           <input
