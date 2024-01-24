@@ -49,6 +49,16 @@ const page = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="flex flex-col w-[400px] ">
+          <label htmlFor="profile">Password</label>
+          <input
+            type="file"
+            className="border-2 border-black rounded p-1 bg-[#d4a373] "
+            name="file"
+            id="profile"
+            onChange={handleChange}
+          />
+        </div>
         <p>
           Dont have an account?{" "}
           <span
