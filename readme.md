@@ -33,18 +33,17 @@ cd server
 if you are in client
 
 ```
-cd ..
-cd server
+cd ../server
 ```
 
 installing all the dependency
 
 ```
-npm i
+pip install -r requirements.txt
 ```
 
 start command
 
 ```
-npm run dev
+python manage.py runserver
 ```
