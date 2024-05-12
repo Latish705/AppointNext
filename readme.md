@@ -47,3 +47,6 @@ start command
 ```
 python manage.py runserver
 ```
+
+
+and
