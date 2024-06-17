@@ -15,6 +15,8 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.status);
   console.log(user);
+  const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+  console.log("BACKEND url", BACKEND_BASE_URL);
   const navigation = useNavigate();
   const [position, setPosition] = useState({ latitude: null, longitude: null });
   const changePage = (page) => {
@@ -77,8 +79,9 @@ const LoginForm = () => {
     console.log(formData);
     formData.latitude = position.latitude;
     formData.longitude = position.longitude;
+
     await axios
-      .post("https://appoint-next.onrender.com/api/login", formData)
+      .post(`${BACKEND_BASE_URL}/api/login`, formData)
       .then((res) => {
         const { username, email } = res.data;
         console.log(username, email);
